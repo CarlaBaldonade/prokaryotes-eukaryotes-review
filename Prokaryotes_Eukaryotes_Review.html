@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prokaryotic & Eukaryotic Cells - Review Activity</title>
+<style>
+  :root{
+    --navy:#1b2a4a;
+    --blue:#2f6fed;
+    --light:#eef3ff;
+    --paper:#ffffff;
+    --ink:#1c1f2b;
+    --muted:#6b7280;
+    --good:#1f9d55;
+    --warn:#d97706;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background:linear-gradient(180deg,#f4f7ff 0%, #eaf0ff 100%);
+    color:var(--ink);
+    padding:24px 12px 60px;
+  }
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{
+    background:var(--paper);
+    border-radius:14px;
+    box-shadow:0 6px 24px rgba(27,42,74,0.10);
+    padding:28px 26px;
+    margin-bottom:20px;
+  }
+  header.top{text-align:center;margin-bottom:18px;}
+  header.top h1{color:var(--navy);font-size:1.4rem;margin:0 0 4px;}
+  header.top p{color:var(--muted);margin:0;font-size:0.92rem;}
+  .field{margin-bottom:14px;}
+  .field label{display:block;font-weight:600;margin-bottom:6px;color:var(--navy);font-size:0.95rem;}
+  input[type="text"], textarea{
+    width:100%;
+    padding:12px 14px;
+    border:1.5px solid #d3ddf5;
+    border-radius:8px;
+    font-size:16px;
+    font-family:inherit;
+    min-height:48px;
+  }
+  textarea{resize:vertical;min-height:120px;}
+  input[type="text"]:focus, textarea:focus{outline:none;border-color:var(--blue);}
+  button{
+    cursor:pointer;
+    border:none;
+    border-radius:9px;
+    padding:14px 22px;
+    font-size:1rem;
+    font-weight:600;
+    min-height:48px;
+    transition:transform .1s ease, opacity .15s ease;
+  }
+  button:active{transform:scale(0.97);}
+  .btn-primary{background:var(--blue);color:#fff;width:100%;}
+  .btn-primary:disabled{opacity:0.5;cursor:not-allowed;}
+  .btn-secondary{background:var(--light);color:var(--navy);}
+  .hidden{display:none !important;}
+  .qnum{
+    display:inline-block;
+    background:var(--light);
+    color:var(--blue);
+    font-weight:700;
+    padding:2px 10px;
+    border-radius:20px;
+    font-size:0.8rem;
+    margin-bottom:8px;
+  }
+  .qnum.reflection{background:#fef3e2;color:var(--warn);}
+  .question{font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:12px;line-height:1.4;}
+  .choices label{
+    display:flex;
+    align-items:center;
+    background:#f7f9ff;
+    border:1.5px solid #e2e8f9;
+    border-radius:8px;
+    padding:14px 14px;
+    margin-bottom:10px;
+    cursor:pointer;
+    font-weight:400;
+    font-size:1rem;
+    min-height:48px;
+    line-height:1.4;
+  }
+  .choices input{margin-right:12px;width:20px;height:20px;flex-shrink:0;accent-color:var(--blue);}
+  .choices label:hover{border-color:var(--blue);}
+  .choices label:active{border-color:var(--blue);background:var(--light);}
+  progress{width:100%;height:10px;border-radius:6px;overflow:hidden;appearance:none;}
+  progress::-webkit-progress-bar{background:#e5eaf9;border-radius:6px;}
+  progress::-webkit-progress-value{background:var(--blue);border-radius:6px;}
+  .progress-label{font-size:0.82rem;color:var(--muted);margin-bottom:6px;display:flex;justify-content:space-between;}
+  .nav-row{display:flex;gap:10px;margin-top:18px;}
+  .nav-row button{flex:1;}
+  .banner{
+    background:var(--light);
+    border-left:4px solid var(--blue);
+    padding:12px 14px;
+    border-radius:8px;
+    font-size:0.9rem;
+    color:var(--navy);
+    margin-bottom:18px;
+  }
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:8px;}
+  .summary-table{width:100%;min-width:520px;border-collapse:collapse;margin-top:10px;font-size:0.92rem;}
+  .summary-table th, .summary-table td{border:1px solid #e2e8f9;padding:8px 10px;text-align:left;vertical-align:top;}
+  .summary-table th{background:var(--light);color:var(--navy);}
+  .final-icon{text-align:center;font-size:2.6rem;margin-bottom:6px;}
+  .time-box{text-align:center;background:var(--light);border-radius:10px;padding:16px;margin:16px 0;}
+  .time-box .time-val{font-size:1.8rem;font-weight:700;color:var(--navy);}
+  .time-box .time-lbl{font-size:0.85rem;color:var(--muted);}
+  .fine-print{font-size:0.78rem;color:var(--muted);text-align:center;margin-top:14px;}
+  .section-tag{font-size:0.78rem;font-weight:700;letter-spacing:0.03em;color:var(--muted);text-transform:uppercase;margin:4px 0 2px;}
+  @media (max-width: 400px){
+    body{padding:16px 8px 50px;}
+    .card{padding:20px 16px;}
+    header.top h1{font-size:1.2rem;}
+    .question{font-size:1rem;}
+    .nav-row{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- START SCREEN -->
+  <div class="card" id="startScreen">
+    <header class="top">
+      <h1>🔬 Prokaryotic &amp; Eukaryotic Cells</h1>
+      <p>Review Activity — What Do You Already Know?</p>
+    </header>
+    <div class="banner">
+      This is a review of what you may already know from high school — we haven't covered this topic in class yet, so it's okay if you're unsure of some answers. Just answer as best you can. Fill in your details, click <strong>Start</strong>, and the timer will begin. Submit and download/share your file at the end to send to your teacher.
+    </div>
+    <div class="field">
+      <label for="studentName">Full Name</label>
+      <input type="text" id="studentName" placeholder="e.g., Juan Dela Cruz">
+    </div>
+    <div class="field">
+      <label for="studentCourse">Course</label>
+      <input type="text" id="studentCourse" placeholder="e.g., BS Biology">
+    </div>
+    <div class="field">
+      <label for="studentYear">Year Level</label>
+      <input type="text" id="studentYear" placeholder="e.g., 1st Year">
+    </div>
+    <button class="btn-primary" id="startBtn">Start Activity</button>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div class="card hidden" id="quizScreen">
+    <div class="progress-label">
+      <span id="qProgressText">Question 1 of 35</span>
+      <span id="qPercentText">3%</span>
+    </div>
+    <progress id="qProgress" value="1" max="35"></progress>
+    <div style="margin-top:20px;" id="questionContainer"></div>
+    <div class="nav-row">
+      <button class="btn-secondary" id="prevBtn">◀ Previous</button>
+      <button class="btn-primary" id="nextBtn">Next ▶</button>
+    </div>
+  </div>
+
+  <!-- CONFIRM SUBMIT SCREEN -->
+  <div class="card hidden" id="confirmScreen">
+    <header class="top">
+      <h1>Ready to Submit?</h1>
+      <p>Once submitted, you cannot change your answers.</p>
+    </header>
+    <div id="unansweredWarning" class="banner hidden" style="border-left-color:var(--warn);"></div>
+    <button class="btn-primary" id="submitBtn">Submit Final Answers</button>
+    <div class="nav-row" style="margin-top:10px;">
+      <button class="btn-secondary" id="backToQuizBtn" style="width:100%;">◀ Go Back and Review</button>
+    </div>
+  </div>
+
+  <!-- DONE SCREEN -->
+  <div class="card hidden" id="doneScreen">
+    <div class="final-icon">✅</div>
+    <header class="top">
+      <h1>Activity Submitted!</h1>
+      <p>Your answers and time have been recorded below.</p>
+    </header>
+    <div class="time-box">
+      <div class="time-val" id="finalTimeVal">--:--</div>
+      <div class="time-lbl">Total time spent</div>
+    </div>
+    <button class="btn-primary" id="downloadBtn">⬇ Download / Share My Answer File</button>
+    <p class="fine-print" id="downloadedNote"></p>
+    <div id="fallbackBox" class="hidden" style="margin-top:14px;">
+      <div class="banner" style="border-left-color:var(--warn);">
+        If the download didn't save anywhere, tap <strong>Select All</strong> below, then <strong>Copy</strong>, and paste your answers into an email, chat, or notes app to send to your teacher.
+      </div>
+      <textarea id="fallbackText" readonly style="min-height:160px;font-size:0.85rem;"></textarea>
+      <div class="nav-row">
+        <button class="btn-secondary" id="selectAllBtn">Select All</button>
+        <button class="btn-secondary" id="copyBtn">📋 Copy Text</button>
+      </div>
+    </div>
+    <div class="table-scroll" style="margin-top:18px;">
+      <table class="summary-table" id="summaryTable"></table>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ---------- QUESTION BANK ----------
+// Q1-15: Multiple Choice
+// Q16-30: Short Answer / Identification
+// Q31-35: Reflection Questions
+const questions = [
+  { type:"mc", prompt:"Which of the following organisms is prokaryotic?", choices:["Amoeba","Bacteria","Fungi","Plant"] },
+  { type:"mc", prompt:"Which structure is found in eukaryotic cells but NOT in prokaryotic cells?", choices:["Cell membrane","Ribosomes","Nucleus","Cytoplasm"] },
+  { type:"mc", prompt:"Prokaryotic cells generally range in size from:", choices:["0.1-5 micrometers","10-100 micrometers","100-1000 micrometers","1-10 millimeters"] },
+  { type:"mc", prompt:"Which kingdom(s) contain organisms with eukaryotic cells?", choices:["Bacteria only","Archaea only","Protista, Fungi, Plantae, Animalia","None of the above"] },
+  { type:"mc", prompt:"The genetic material in a prokaryotic cell is typically:", choices:["Enclosed in a nucleus","Found in a nucleoid region, not membrane-bound","Absent","Found only in mitochondria"] },
+  { type:"mc", prompt:"Which of the following is an example of a eukaryotic organism?", choices:["E. coli","Yeast","Cyanobacteria","Archaea"] },
+  { type:"mc", prompt:"Membrane-bound organelles such as mitochondria and the endoplasmic reticulum are found in:", choices:["Prokaryotic cells only","Eukaryotic cells only","Both","Neither"] },
+  { type:"mc", prompt:"Which of the following best describes the cell wall of most bacteria?", choices:["Made of cellulose","Made of peptidoglycan","Made of chitin","Absent"] },
+  { type:"mc", prompt:"Ribosomes are found in:", choices:["Prokaryotic cells only","Eukaryotic cells only","Both prokaryotic and eukaryotic cells","Neither"] },
+  { type:"mc", prompt:"Which organelle is responsible for producing energy (ATP) in eukaryotic cells?", choices:["Nucleus","Mitochondria","Ribosome","Nucleoid"] },
+  { type:"mc", prompt:"A defining feature of prokaryotic cells is the absence of:", choices:["DNA","Cell membrane","Membrane-bound organelles","Cytoplasm"] },
+  { type:"mc", prompt:"Which domain(s) of life consist of prokaryotic organisms?", choices:["Eukarya only","Bacteria and Archaea","Fungi only","Plantae and Animalia"] },
+  { type:"mc", prompt:"Which structure allows some bacteria to move?", choices:["Chloroplast","Flagellum","Golgi apparatus","Nucleus"] },
+  { type:"mc", prompt:"Compared to eukaryotic cells, prokaryotic cells are generally:", choices:["Larger and more complex","Smaller and simpler","The same size","Only found in plants"] },
+  { type:"mc", prompt:"Which of the following is TRUE about eukaryotic cells?", choices:["They lack a nucleus","They have membrane-bound organelles","They are always unicellular","They have no DNA"] },
+
+  { type:"id", prompt:"What does the term \"prokaryote\" mean, based on its word origin?" },
+  { type:"id", prompt:"What does the term \"eukaryote\" mean, based on its word origin?" },
+  { type:"id", prompt:"Name one example of a prokaryotic organism." },
+  { type:"id", prompt:"Name one example of a eukaryotic organism." },
+  { type:"id", prompt:"What is the main difference between prokaryotic and eukaryotic cells in terms of the nucleus?" },
+  { type:"id", prompt:"What is the term for the region where DNA is located in a prokaryotic cell (since it has no nucleus)?" },
+  { type:"id", prompt:"Give one structure found in BOTH prokaryotic and eukaryotic cells." },
+  { type:"id", prompt:"Give one structure found ONLY in eukaryotic cells." },
+  { type:"id", prompt:"Which type of cell — prokaryotic or eukaryotic — is generally considered more ancient in evolutionary history?" },
+  { type:"id", prompt:"What are the two domains of life that consist entirely of prokaryotic organisms?" },
+  { type:"id", prompt:"In terms of size, which is generally larger: a prokaryotic cell or a eukaryotic cell?" },
+  { type:"id", prompt:"What is the general function of the cell membrane in both prokaryotic and eukaryotic cells?" },
+  { type:"id", prompt:"Name one organelle found in a eukaryotic cell that is involved in protein synthesis or modification (other than ribosomes)." },
+  { type:"id", prompt:"Can prokaryotic organisms be multicellular? Briefly explain." },
+  { type:"id", prompt:"What is one reason scientists believe mitochondria may have originated from a prokaryotic organism?" },
+
+  { type:"reflection", prompt:"Before this activity, what did you already know about prokaryotic and eukaryotic cells from high school?" },
+  { type:"reflection", prompt:"Which parts of this topic do you feel most confident about? Why?" },
+  { type:"reflection", prompt:"Which parts of this topic are you still unsure about or would like to review further?" },
+  { type:"reflection", prompt:"Why do you think it's important to understand the difference between prokaryotic and eukaryotic cells in biology?" },
+  { type:"reflection", prompt:"What real-life examples or connections can you think of that relate to prokaryotic or eukaryotic organisms?" }
+];
+
+// ---------- STATE ----------
+let currentQ = 0;
+let studentAnswers = new Array(questions.length).fill("");
+let pageOpenTime = new Date();
+let startTime = null;
+let endTime = null;
+let downloadTime = null;
+let studentName = "";
+let studentCourse = "";
+let studentYear = "";
+
+// ---------- ELEMENTS ----------
+const startScreen = document.getElementById('startScreen');
+const quizScreen = document.getElementById('quizScreen');
+const confirmScreen = document.getElementById('confirmScreen');
+const doneScreen = document.getElementById('doneScreen');
+
+const startBtn = document.getElementById('startBtn');
+const nextBtn = document.getElementById('nextBtn');
+const prevBtn = document.getElementById('prevBtn');
+const submitBtn = document.getElementById('submitBtn');
+const backToQuizBtn = document.getElementById('backToQuizBtn');
+const downloadBtn = document.getElementById('downloadBtn');
+
+const questionContainer = document.getElementById('questionContainer');
+const qProgress = document.getElementById('qProgress');
+const qProgressText = document.getElementById('qProgressText');
+const qPercentText = document.getElementById('qPercentText');
+
+// ---------- START ----------
+startBtn.addEventListener('click', () => {
+  const nameVal = document.getElementById('studentName').value.trim();
+  const courseVal = document.getElementById('studentCourse').value.trim();
+  const yearVal = document.getElementById('studentYear').value.trim();
+  if (!nameVal) { alert("Please type your full name."); return; }
+  if (!courseVal) { alert("Please type your course."); return; }
+  if (!yearVal) { alert("Please type your year level."); return; }
+  studentName = nameVal;
+  studentCourse = courseVal;
+  studentYear = yearVal;
+  startTime = new Date();
+  qProgress.max = questions.length;
+  startScreen.classList.add('hidden');
+  quizScreen.classList.remove('hidden');
+  renderQuestion();
+});
+
+// ---------- RENDER ----------
+function sectionLabelFor(index){
+  if (index === 0) return "Part I. Multiple Choice";
+  if (index === 15) return "Part II. Short Answer";
+  if (index === 30) return "Part III. Reflection Questions";
+  return null;
+}
+
+function renderQuestion(){
+  const q = questions[currentQ];
+  qProgress.value = currentQ + 1;
+  qProgressText.textContent = `Question ${currentQ+1} of ${questions.length}`;
+  qPercentText.textContent = Math.round(((currentQ+1)/questions.length)*100) + "%";
+
+  let html = "";
+  const label = sectionLabelFor(currentQ);
+  if (label){ html += `<div class="section-tag">${label}</div>`; }
+
+  const tagClass = q.type === "reflection" ? "qnum reflection" : "qnum";
+  html += `<div class="${tagClass}">Question ${currentQ+1}</div>
+              <div class="question">${q.prompt}</div>`;
+
+  if (q.type === "mc"){
+    html += `<div class="choices">`;
+    q.choices.forEach((choice) => {
+      const checked = studentAnswers[currentQ] === choice ? "checked" : "";
+      html += `<label><input type="radio" name="mc${currentQ}" value="${choice.replace(/"/g,'&quot;')}" ${checked}> ${choice}</label>`;
+    });
+    html += `</div>`;
+  } else if (q.type === "reflection"){
+    html += `<textarea id="reflAnswer" placeholder="Type your reflection here">${studentAnswers[currentQ]}</textarea>`;
+  } else {
+    html += `<input type="text" id="idAnswer" placeholder="Type your answer here" value="${studentAnswers[currentQ].replace(/"/g,'&quot;')}">`;
+  }
+
+  questionContainer.innerHTML = html;
+
+  if (q.type === "mc"){
+    document.querySelectorAll(`input[name="mc${currentQ}"]`).forEach(el => {
+      el.addEventListener('change', (e) => { studentAnswers[currentQ] = e.target.value; });
+    });
+  } else if (q.type === "reflection"){
+    document.getElementById('reflAnswer').addEventListener('input', (e) => {
+      studentAnswers[currentQ] = e.target.value;
+    });
+  } else {
+    document.getElementById('idAnswer').addEventListener('input', (e) => {
+      studentAnswers[currentQ] = e.target.value;
+    });
+  }
+
+  prevBtn.disabled = currentQ === 0;
+  nextBtn.textContent = currentQ === questions.length - 1 ? "Review & Submit ▶" : "Next ▶";
+}
+
+prevBtn.addEventListener('click', () => {
+  if (currentQ > 0){ currentQ--; renderQuestion(); }
+});
+
+nextBtn.addEventListener('click', () => {
+  if (studentAnswers[currentQ].trim() === ""){
+    alert("Please answer this question before moving on.");
+    return;
+  }
+  if (currentQ < questions.length - 1){
+    currentQ++;
+    renderQuestion();
+  } else {
+    showConfirmScreen();
+  }
+});
+
+// ---------- CONFIRM ----------
+function showConfirmScreen(){
+  quizScreen.classList.add('hidden');
+  confirmScreen.classList.remove('hidden');
+  const unanswered = studentAnswers
+    .map((a, i) => a.trim() === "" ? i+1 : null)
+    .filter(x => x !== null);
+  const warningBox = document.getElementById('unansweredWarning');
+  if (unanswered.length > 0){
+    warningBox.classList.remove('hidden');
+    warningBox.textContent = `⚠️ You have ${unanswered.length} unanswered question(s): #${unanswered.join(', ')}. You can still go back and answer them.`;
+  } else {
+    warningBox.classList.add('hidden');
+  }
+}
+
+backToQuizBtn.addEventListener('click', () => {
+  confirmScreen.classList.add('hidden');
+  quizScreen.classList.remove('hidden');
+  currentQ = 0;
+  renderQuestion();
+});
+
+// ---------- SUBMIT ----------
+submitBtn.addEventListener('click', () => {
+  endTime = new Date();
+  confirmScreen.classList.add('hidden');
+  doneScreen.classList.remove('hidden');
+
+  const totalSeconds = Math.floor((endTime - startTime) / 1000);
+  const mins = Math.floor(totalSeconds / 60);
+  const secs = totalSeconds % 60;
+  document.getElementById('finalTimeVal').textContent = `${mins}m ${secs}s`;
+
+  let tableHTML = `<tr><th>#</th><th>Question</th><th>Answer</th></tr>`;
+  questions.forEach((q, i) => {
+    const ans = studentAnswers[i].trim() === "" ? "(no answer)" : studentAnswers[i];
+    tableHTML += `<tr><td>${i+1}</td><td>${q.prompt}</td><td>${ans}</td></tr>`;
+  });
+  document.getElementById('summaryTable').innerHTML = tableHTML;
+});
+
+// ---------- BUILD CONTENT ----------
+function buildContent(){
+  const totalSeconds = Math.floor((endTime - startTime) / 1000);
+  const mins = Math.floor(totalSeconds / 60);
+  const secs = totalSeconds % 60;
+
+  const sessionSeconds = Math.floor((downloadTime - pageOpenTime) / 1000);
+  const sessionMins = Math.floor(sessionSeconds / 60);
+  const sessionSecs = sessionSeconds % 60;
+
+  let content = "";
+  content += "==============================================\n";
+  content += "  PROKARYOTIC & EUKARYOTIC CELLS - REVIEW ACTIVITY\n";
+  content += "==============================================\n\n";
+  content += `Name: ${studentName}\n`;
+  content += `Course: ${studentCourse}\n`;
+  content += `Year Level: ${studentYear}\n`;
+  content += `Time File Opened: ${pageOpenTime.toLocaleString()}\n`;
+  content += `Time Started Answering: ${startTime.toLocaleString()}\n`;
+  content += `Time Submitted: ${endTime.toLocaleString()}\n`;
+  content += `Time Downloaded/Shared: ${downloadTime.toLocaleString()}\n`;
+  content += `Time Spent Answering: ${mins} min ${secs} sec (${totalSeconds} seconds)\n`;
+  content += `Total Session Duration (Opened to Download): ${sessionMins} min ${sessionSecs} sec (${sessionSeconds} seconds)\n`;
+
+  content += "\n----------------------------------------------\n";
+  content += "PART I. MULTIPLE CHOICE\n";
+  content += "----------------------------------------------\n\n";
+  for (let i = 0; i < 15; i++){
+    const ans = studentAnswers[i].trim() === "" ? "(no answer)" : studentAnswers[i];
+    content += `Q${i+1}: ${questions[i].prompt}\nAnswer: ${ans}\n\n`;
+  }
+
+  content += "----------------------------------------------\n";
+  content += "PART II. SHORT ANSWER\n";
+  content += "----------------------------------------------\n\n";
+  for (let i = 15; i < 30; i++){
+    const ans = studentAnswers[i].trim() === "" ? "(no answer)" : studentAnswers[i];
+    content += `Q${i+1}: ${questions[i].prompt}\nAnswer: ${ans}\n\n`;
+  }
+
+  content += "----------------------------------------------\n";
+  content += "PART III. REFLECTION QUESTIONS\n";
+  content += "----------------------------------------------\n\n";
+  for (let i = 30; i < 35; i++){
+    const ans = studentAnswers[i].trim() === "" ? "(no answer)" : studentAnswers[i];
+    content += `Q${i+1}: ${questions[i].prompt}\nAnswer: ${ans}\n\n`;
+  }
+
+  content += "----------------------------------------------\n";
+  content += "End of submission. Please send this file to your teacher.\n";
+  return content;
+}
+
+function showFallback(content, message){
+  document.getElementById('fallbackText').value = content;
+  document.getElementById('fallbackBox').classList.remove('hidden');
+  if (message){
+    document.getElementById('downloadedNote').textContent = message;
+  }
+}
+
+// ---------- DOWNLOAD / SHARE ----------
+downloadBtn.addEventListener('click', async () => {
+  downloadTime = new Date();
+  const content = buildContent();
+  const safeName = studentName.replace(/[^a-z0-9]/gi, '_');
+  const filename = `ProkaryotesEukaryotes_${safeName}.txt`;
+
+  try {
+    if (navigator.canShare && window.File){
+      const file = new File([content], filename, { type: "text/plain" });
+      if (navigator.canShare({ files: [file] })){
+        await navigator.share({
+          files: [file],
+          title: "Prokaryotic & Eukaryotic Cells - Review Activity",
+          text: `${studentName}'s answers`
+        });
+        document.getElementById('downloadedNote').textContent = "✅ Shared! Save it to Files or send it directly to your teacher from the share menu.";
+        return;
+      }
+    }
+  } catch (err){
+    if (err && err.name === 'AbortError'){
+      document.getElementById('downloadedNote').textContent = "Share cancelled. Tap the button again, or use Copy Text below.";
+      showFallback(content);
+      return;
+    }
+  }
+
+  try {
+    const blob = new Blob([content], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    document.getElementById('downloadedNote').textContent = "✅ File downloaded! Check your Downloads folder. If nothing appeared, use Copy Text below instead.";
+    showFallback(content);
+  } catch (err){
+    showFallback(content, "Couldn't auto-download. Please copy your answers below and send them to your teacher.");
+  }
+});
+
+// ---------- FALLBACK COPY ----------
+document.getElementById('selectAllBtn').addEventListener('click', () => {
+  const box = document.getElementById('fallbackText');
+  box.focus();
+  box.setSelectionRange(0, box.value.length);
+});
+
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  const box = document.getElementById('fallbackText');
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      await navigator.clipboard.writeText(box.value);
+    } else {
+      box.focus();
+      box.setSelectionRange(0, box.value.length);
+      document.execCommand('copy');
+    }
+    document.getElementById('downloadedNote').textContent = "✅ Copied! Paste it into an email, chat, or message to your teacher.";
+  } catch (err){
+    box.focus();
+    box.setSelectionRange(0, box.value.length);
+    alert("Please press and hold on the text box, then choose Copy.");
+  }
+});
+</script>
+</body>
+</html>
