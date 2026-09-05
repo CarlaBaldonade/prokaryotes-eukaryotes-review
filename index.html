@@ -190,7 +190,7 @@
       <div class="time-val" id="finalTimeVal">--:--</div>
       <div class="time-lbl">Total time spent</div>
     </div>
-    <button class="btn-primary" id="downloadBtn">⬇ Download / Share My Answer File</button>
+    <button class="btn-primary" id="downloadBtn">⬇ Download My Answer File</button>
     <p class="fine-print" id="downloadedNote"></p>
     <div id="fallbackBox" class="hidden" style="margin-top:14px;">
       <div class="banner" style="border-left-color:var(--warn);">
@@ -476,44 +476,25 @@ function showFallback(content, message){
   }
 }
 
-// ---------- DOWNLOAD / SHARE ----------
-downloadBtn.addEventListener('click', async () => {
+// ---------- DOWNLOAD ----------
+downloadBtn.addEventListener('click', () => {
   downloadTime = new Date();
   const content = buildContent();
   const safeName = studentName.replace(/[^a-z0-9]/gi, '_');
   const filename = `ProkaryotesEukaryotes_${safeName}.txt`;
 
   try {
-    if (navigator.canShare && window.File){
-      const file = new File([content], filename, { type: "text/plain" });
-      if (navigator.canShare({ files: [file] })){
-        await navigator.share({
-          files: [file],
-          title: "Prokaryotic & Eukaryotic Cells - Review Activity",
-          text: `${studentName}'s answers`
-        });
-        document.getElementById('downloadedNote').textContent = "✅ Shared! Save it to Files or send it directly to your teacher from the share menu.";
-        return;
-      }
-    }
-  } catch (err){
-    if (err && err.name === 'AbortError'){
-      document.getElementById('downloadedNote').textContent = "Share cancelled. Tap the button again, or use Copy Text below.";
-      showFallback(content);
-      return;
-    }
-  }
-
-  try {
-    const blob = new Blob([content], { type: "text/plain" });
+    const blob = new Blob([content], { type: "application/octet-stream" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
     a.download = filename;
+    a.target = "_self";
+    a.rel = "noopener";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    setTimeout(() => URL.revokeObjectURL(url), 3000);
     document.getElementById('downloadedNote').textContent = "✅ File downloaded! Check your Downloads folder. If nothing appeared, use Copy Text below instead.";
     showFallback(content);
   } catch (err){
